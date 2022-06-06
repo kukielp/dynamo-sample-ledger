@@ -21,3 +21,5 @@ Then play with the ledger
 [The App](http://127.0.0.1:5000/)
 
 If you want to look at the DynamoDB table ( locally ) download [No SQL Workbench](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.settingup.html) and open a new local connection.
+
+![Ledger](https://github.com/kukielp/dynamo-sample-ledger/blob/main/static/ledger.png?raw=true)
