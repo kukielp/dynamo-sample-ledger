@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>{{ title }}</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    </head>
+    <body>
+        <h1>{{ title }}</h1>
+        <h2>{{ bank_message }}</h2>
+        Accounts and Balances: <br />
+        {% for account in balances %}
+            <p>{{ account.account_name }} : ${{ account.balance }}<br /></p>
+        {% endfor %}
+        </table>
+        Move an amount from Matt to Paul
+        <form action="/" method="post">
+            <input type="text" name="amount_matt">
+            <input type="submit" name="choice">
+        </form>
+        <br />
+
+        Move an amount from Paul to Matt
+        <form action="/" method="post">
+            <input type="text" name="amount_paul">
+            <input type="submit" name="choice">
+        </form>
+
+        Transactions
+        <table class="center">
+            <tr>
+              <th>Debit</th>
+              <th>Credit</th>
+              <th>Amount</th> 
+            </tr>
+            {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction.debit }}</td>
+                    <td>{{ transaction.credit }}</td>
+                    <td>${{ transaction.amount }}</td>
+                </tr>
+             {% endfor %}
+          </table>
+    </body>
+</html>

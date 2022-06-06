@@ -1,0 +1,24 @@
+version: '2'
+services:
+    web:
+        build: .
+        ports:
+            - "5000:5000"
+        volumes:
+            - .:/code
+        depends_on:
+            - dynamodb
+        environment:
+            - AWS_ACCESS_KEY_ID='fake''
+            - AWS_SECRET_ACCESS_KEY='fake'
+            - AWS_DEFAULT_REGION='ap-southeast-2'
+    dynamodb:
+      image:  amazon/dynamodb-local
+      container_name: dynamodb
+      hostname: dynamodb
+      restart: always
+      volumes:
+        -  ./dynamodb-data:/home/dynamodblocal/data
+      ports:
+        - 8000:8000
+      command: "-jar DynamoDBLocal.jar -sharedDb -dbPath /home/dynamodblocal/data/"
