@@ -141,7 +141,6 @@ def transact():
                                     'S': transaction_details['credit']
                                 }
                             },
-                            'ConditionExpression': 'balance >= :amount',
                             'UpdateExpression': 'set balance = balance + :amount',
                             'ExpressionAttributeValues': {
                                 ':amount': {'N': transaction_details['amount']}
@@ -152,7 +151,7 @@ def transact():
             )
             mesage = 'Moved $' + str(transaction_details['amount']) + ' from ' + transaction_details['debit'] + ' to ' + transaction_details['credit']
         except:
-            mesage = transaction_details['debit'] + ' has insuffcient Funds'
+            mesage = transaction_details['debit'] + ' has insufficient Funds'
     else:
         mesage = ''
 
