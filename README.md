@@ -3,7 +3,7 @@
 Dependencies:
 - Docker
 
-This is simply to demo, clone the repo...
+This is simple to demo, clone the repo...
 
 ```
 git clone https://github.com/kukielp/dynamo-sample-ledger.git
