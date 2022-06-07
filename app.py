@@ -78,7 +78,7 @@ def create_table_and_seed(dynamodb_resource,dynamodb_client):
 @app.route('/load')
 def load():
     dynamodb_resource = boto3.resource('dynamodb', region_name='ap-northeast-1')
-    dynamodb_client = boto3.client('dynamodb', region_name='aap-northeast-1')
+    dynamodb_client = boto3.client('dynamodb', region_name='ap-northeast-1')
     create_table_and_seed(dynamodb_resource, dynamodb_client)
     return 'Database Created and seeded'
 
