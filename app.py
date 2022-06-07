@@ -5,6 +5,7 @@ from redis import Redis
 import boto3
 from boto3.dynamodb.conditions import Key
 import uuid
+import time
 
 app = Flask(__name__)
 
@@ -57,6 +58,8 @@ def create_table_and_seed(dynamodb_resource,dynamodb_client):
             'WriteCapacityUnits': 1,
         }
     )
+    #let table create
+    time.sleep(5)
 
     #seed initial Balance
     totals = dynamodb_resource.Table('totals')
