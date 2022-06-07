@@ -77,8 +77,8 @@ def create_table_and_seed(dynamodb_resource,dynamodb_client):
 
 @app.route('/load')
 def load():
-    dynamodb_resource = boto3.resource('dynamodb', region_name='ap-southeast-2', endpoint_url='http://dynamodb:8000')
-    dynamodb_client = boto3.client('dynamodb', region_name='ap-southeast-2', endpoint_url='http://dynamodb:8000')
+    dynamodb_resource = boto3.resource('dynamodb', region_name='ap-northeast-1')
+    dynamodb_client = boto3.client('dynamodb', region_name='aap-northeast-1')
     create_table_and_seed(dynamodb_resource, dynamodb_client)
     return 'Database Created and seeded'
 
@@ -94,7 +94,7 @@ def transact():
 
 
     if transact:
-        dynamodb_client = boto3.client('dynamodb', region_name='ap-southeast-2', endpoint_url='http://dynamodb:8000')
+        dynamodb_client = boto3.client('dynamodb', region_name='ap-northeast-1')
         transaction_details = {'debit':'','credit':'','amount':0}
         if amount_paul is None:
             transaction_details['debit'] = 'Matt'
@@ -155,7 +155,7 @@ def transact():
     else:
         mesage = ''
 
-    dynamodb_resource = boto3.resource('dynamodb', region_name='ap-southeast-2', endpoint_url='http://dynamodb:8000')
+    dynamodb_resource = boto3.resource('dynamodb', region_name='ap-northeast-1')
          
     balances =  dynamodb_resource.Table('totals').scan()['Items']
     transactions = dynamodb_resource.Table('transactions').scan()['Items']
